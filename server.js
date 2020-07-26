@@ -7,7 +7,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-// routes
+require("./routes/html-routes")(app);
+require("./routes/api-routes")(app);
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workoutTracker", {
   useNewUrlParser: true
