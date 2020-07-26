@@ -20,8 +20,24 @@ module.exports = (app) => {
     } catch (error) {
       console.log(`workout creation failed: ${error}`);  
     }
-  })
+  });
+  app.put("/api/workouts/:id", (req, res) => {
+    const { id } = req.params;
 
+    
+    db.Workout.updateOne({_id: id}, {$push: {exercises: req.body}})
+    .then(updated => {
+      res.json(updated);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+   });
+
+  
+
+
+ 
  
 
 
