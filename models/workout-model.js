@@ -1,7 +1,10 @@
+// mongoose required into file
 const mongoose = require("mongoose");
 
+// mongoose.schema initialised
 const Schema = mongoose.Schema;
 
+// new schema created
 const workoutSchema = new Schema(
   {
     day: {
@@ -39,19 +42,21 @@ const workoutSchema = new Schema(
       },
     ],
   },
+  //this will allow any virtual properties to be included when data is requested
   {
     toJSON: {
       virtuals: true,
     },
   }
 );
-
+// dynamically created property to schema
 workoutSchema.virtual("totalDuration").get(function () {
+  // reduce exercises array to return total duration 
   return this.exercises.reduce((total, exercise) => { return total + exercise.duration }, 0);
 });
-
+// workout model defined and retrieved 
 const workout = mongoose.model("Workout", workoutSchema);
-
+// workout model exported within an object
 module.exports = {
   Workout: workout,
 };
