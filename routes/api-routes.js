@@ -11,4 +11,23 @@ module.exports = (app) => {
     });
   });
 
-  
+  app.post("/api/workouts", async (req, res) => {
+    try {
+      const response = await db.Workout.create({
+        type: "workout"
+      })
+      res.json(response);
+    } catch (error) {
+      console.log(`workout creation failed: ${error}`);  
+    }
+  })
+
+ 
+
+
+
+
+
+
+
+}
