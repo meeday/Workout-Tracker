@@ -21,6 +21,7 @@ module.exports = (app) => {
       console.log(`workout creation failed: ${error}`);  
     }
   });
+
   app.put("/api/workouts/:id", (req, res) => {
     const { id } = req.params;
 
@@ -33,17 +34,14 @@ module.exports = (app) => {
       res.json(err);
     });
    });
-
   
-
-
- 
- 
-
-
-
-
-
-
-
-}
+  app.get("/api/workouts/range", (req, res) => {
+    db.Workout.find({})
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+  });
+};
