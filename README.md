@@ -50,8 +50,9 @@ week-17 assignment
   none
 
   ## __Links__
-  [deployed link][https://workout-tracker-meeday.herokuapp.com/]
-  [repository link][https://github.com/meeday/Workout-Tracker]
+  [deployed link](https://workout-tracker-meeday.herokuapp.com/)
+
+  [repository link](https://github.com/meeday/Workout-Tracker)
 
   ## __Questions__
 
