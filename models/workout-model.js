@@ -55,8 +55,6 @@ workoutSchema.virtual("totalDuration").get(function () {
   return this.exercises.reduce((total, exercise) => { return total + exercise.duration }, 0);
 });
 // workout model defined and retrieved 
-const workout = mongoose.model("Workout", workoutSchema);
+const Workout = mongoose.model("Workout", workoutSchema);
 // workout model exported within an object
-module.exports = {
-  Workout: workout,
-};
+module.exports = Workout;
