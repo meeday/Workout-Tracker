@@ -3,9 +3,9 @@ const db = require("../models/workout-model");
 
 // get, post, put request routes setup based on the api.js file
 module.exports = (app) => {
-  // get request to fetch the lastr workout
+  // get request to fetch the last workout
   app.get("/api/workouts", (req, res) => {
-    db.Workout.find({})
+    db.find({})
     .then(result => {
       res.json(result);
     })
@@ -16,7 +16,7 @@ module.exports = (app) => {
 // post request to create new workout and save to database
   app.post("/api/workouts", async (req, res) => {
     try {
-      const response = await db.Workout.create({
+      const response = await db.create({
         type: "workout"
       })
       res.json(response);
@@ -30,7 +30,7 @@ module.exports = (app) => {
     const { id } = req.params;
 
     
-    db.Workout.updateOne({_id: id}, {$push: {exercises: req.body}})
+    db.updateOne({_id: id}, {$push: {exercises: req.body}})
     .then(updated => {
       res.json(updated);
     })
@@ -40,7 +40,7 @@ module.exports = (app) => {
    });
   // request to workouts in range
   app.get("/api/workouts/range", (req, res) => {
-    db.Workout.find({})
+    db.find({})
     .then(result => {
       res.json(result);
     })
