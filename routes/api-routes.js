@@ -6,7 +6,7 @@ module.exports = (app) => {
   // get request to fetch the last workout
   app.get("/api/workouts", async (req, res) => {
     try {
-      const result = await db.find({});
+      const result = await db.Workout.find({});
       res.json(result);
     } catch (error) {
       res.json(error);
@@ -15,7 +15,7 @@ module.exports = (app) => {
   // post request to create new workout and save to database
   app.post("/api/workouts", async (req, res) => {
     try {
-      const response = await db.create({
+      const response = await db.Workout.create({
         type: "workout",
       });
       res.json(response);
@@ -28,7 +28,7 @@ module.exports = (app) => {
   app.put("/api/workouts/:id", async (req, res) => {
     const { id } = req.params;
     try {
-      const updated = await db.updateOne(
+      const updated = await db.Workout.updateOne(
         { _id: id },
         { $push: { exercises: req.body } }
       );
@@ -40,7 +40,7 @@ module.exports = (app) => {
   // request to workouts in range
   app.get("/api/workouts/range", async (req, res) => {
     try {
-      const result = await db.find({});
+      const result = await db.Workout.find({});
       res.json(result);
     } catch (error) {
       res.json(error);
